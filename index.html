@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+
+      $('#submit').click(function(e) {
+          e.preventDefault(); // prevent reloading of page
+
+          var validEmail = $('#username').val() === 'admin';
+          var validPassword = $('#password').val() === '123';
+
+          if (validEmail === true && validPassword === true) {
+              //$('.valid').css('display', 'block');
+              //window.location = 
+              window.location.href = "announcements.html";
+          }
+          // else if (validEmail === true && validPassword === false) {
+
+          // }
+          // else if (validEmail === false && validPassword === true) {
+
+          // }
+          else {
+              $('.error').css('display', 'block');
+          }
+      });
+      });
+    </script>
     <title>Avenue4Learning</title>
   </head>
 
   <body>
     <main>
       <h1>Avenue 4 Learning</h1>
-      <a href="announcements.html">Announcements</a>
+      <!-- <a href="announcements.html">Announcements</a>
       <a href="content.html">Content</a>
       <a href="discussions.html">Discussions</a>
-      <a href="calendar.html">Calendar</a>
-    </main>
+      <a href="calendar.html">Calendar</a> -->
 
-    Login page
+      <section class="form">
+        <h2>Login To Your Account</h2>
+        <p class="valid">Valid. Please wait a moment...</p>
+        <p class="error">Error. Please enter a valid username/password</p> <!-- Look into validating username/password individually and give different error messages -->
+        <form class="loginbox" autocomplete="off">
+          <input placeholder="Username" type="text" id="username"/>
+          <input placeholder="Password" type="text" id="password"/>
+          <button id="submit">Login</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>
