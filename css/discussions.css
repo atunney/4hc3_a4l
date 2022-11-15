@@ -15,34 +15,6 @@ body {
   height: 100vh;
 }
 
-.sidebar {
-  flex: 0 0 auto;
-  background: white;
-  padding: 1rem;
-  width: 17rem;
-  margin: 0.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.logo-wrapper {
-  padding: 0.75rem;
-  background-color: #ffffff;
-  text-align: center;
-  width: 100%;
-  border-radius: 1.5rem;
-  border-right-width: 2px;
-  border-left-width: 2px;
-  border-color: #bfdbfe;
-}
-
-.logo-text {
-  color: #3b82f6;
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 700;
-}
-
 .course-tree-wrapper {
   display: flex;
   flex-direction: column;
@@ -55,81 +27,6 @@ body {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 400;
-}
-
-.navbar {
-  flex: 0 0 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background: white;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
-  background-color: #ffffff;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-@media (min-width: 1280px) {
-  .navbar {
-    flex-wrap: nowrap;
-  }
-}
-.navbar-item {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  background-color: #ffffff;
-  color: #374151;
-  text-align: center;
-  border-radius: 1.5rem;
-  border-width: 2px;
-  border-color: transparent;
-  cursor: pointer;
-  line-height: 34px;
-}
-
-.navbar-item:hover {
-  background-color: #eff6ff;
-  color: #60a5fa;
-  border-color: #60a5fa;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.navbar-item.selected {
-  background-color: #dbeafe;
-  color: #60a5fa;
-  font-weight: 700;
-}
-
-.navbar-item-content-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.navbar-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.navbar-text {
-  padding-right: 0.5rem;
 }
 
 .content-side {
@@ -233,6 +130,7 @@ body {
   bottom: 0.5rem;
   padding: 1rem;
   margin-left: 1rem;
+  margin-right: 0.5rem;
   background-color: #ffffff;
   justify-content: center;
   align-items: center;

@@ -6,6 +6,8 @@
     <script src="js/minified/fontawesome-all.min.js"></script>
     <script src="js/minified/tailwind-3.2.4.min.js"></script>
     <link href="css/discussions.css" rel="stylesheet" />
+    <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/sidebar.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -44,54 +46,7 @@
         </div>
       </aside>
       <section class="content-side">
-        <nav class="navbar">
-          <div class="navbar-item selected">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon">
-                <i class="fa-solid fa-bullhorn scale-110"></i>
-              </div>
-              <div class="navbar-text">Announcements</div>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon">
-                <i class="fa-solid fa-book-open scale-110"></i>
-              </div>
-              <div class="navbar-text">Content</div>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon">
-                <i class="fa-solid fa-comment scale-110"></i>
-              </div>
-              <div class="navbar-text">Discussions</div>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon">
-                <i class="fa-solid fa-calendar scale-110"></i>
-              </div>
-              <div class="navbar-text">Calender</div>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon bg-gray-200 rounded-xl mr-2">HA</div>
-              <div class="navbar-text">Himanshu</div>
-            </div>
-          </div>
-          <div class="navbar-item">
-            <div class="navbar-item-content-wrapper">
-              <div class="navbar-icon">
-                <i class="fa-solid fa-gear scale-125"></i>
-              </div>
-              <div class="navbar-text">Settings</div>
-            </div>
-          </div>
-        </nav>
+        <nav class="navbar"></nav>
         <main class="main">
           <div class="chat-wrapper"></div>
         </main>
@@ -111,6 +66,8 @@
       </section>
     </div>
     <script src="jquery.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/discussions.js"></script>
   </body>
 </html>
