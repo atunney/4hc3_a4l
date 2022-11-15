@@ -13,21 +13,24 @@
           var validPassword = $('#password').val() === '123';
 
           if (validEmail === true && validPassword === true) {
-              //$('.valid').css('display', 'block');
-              //window.location = 
               window.location.href = "announcements.html";
           }
-          // else if (validEmail === true && validPassword === false) {
-
-          // }
-          // else if (validEmail === false && validPassword === true) {
-
-          // }
           else {
               $('.error').css('display', 'block');
           }
       });
       });
+    </script>
+    <script type="text/javascript">
+      function togglePassword() {
+        var x = document.getElementById("passwordInput");
+        if (x.type === "password") {
+          x.type = "text";
+        }
+        else {
+          x.type = "password";
+        }
+      }
     </script>
     <title>Avenue4Learning</title>
   </head>
@@ -35,18 +38,14 @@
   <body>
     <main>
       <h1>Avenue 4 Learning</h1>
-      <!-- <a href="announcements.html">Announcements</a>
-      <a href="content.html">Content</a>
-      <a href="discussions.html">Discussions</a>
-      <a href="calendar.html">Calendar</a> -->
-
       <section class="form">
         <h2>Login To Your Account</h2>
         <p class="valid">Valid. Please wait a moment...</p>
-        <p class="error">Error. Please enter a valid username/password</p> <!-- Look into validating username/password individually and give different error messages -->
+        <p class="error">Error. <br> Please enter a valid username and password.</p>
         <form class="loginbox" autocomplete="off">
-          <input placeholder="Username" type="text" id="username"/>
-          <input placeholder="Password" type="text" id="password"/>
+          <input placeholder="Username" type="text" required id="username">
+          <input placeholder="Password" type="password" id="passwordInput"><p>Show Password</p>
+          <input class = "valid" type="checkbox" onclick="togglePassword()">
           <button id="submit">Login</button>
         </form>
       </section>

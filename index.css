@@ -1,8 +1,7 @@
-/* Need to modify text box text colours when entering */
-
 body {
-    background: #44c4e7;
-    background-size: cover;
+    background-image: url("/images/login_background.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     font-family: "Roboto";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -13,7 +12,12 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background: #44c4e7;
+    background: #540000;
+  }
+  h1 {
+    text-align: right;
+    /* padding-right: 180px; */
+    color: white;
   }
   .form {
     position: absolute;
@@ -28,7 +32,7 @@ body {
   .form h2 {
     margin: 0 0 20px;
     line-height: 1;
-    color: #44c4e7;
+    color: #540000;
     font-size: 18px;
     font-weight: 400;
   }
@@ -39,7 +43,7 @@ body {
     margin: 0 0 20px;
     padding: 10px 15px;
     border: 1px solid #ccc;
-    color: #ccc;
+    color: black;
     font-family: "Roboto";
     box-sizing: border-box;
     font-size: 14px;
@@ -50,11 +54,11 @@ body {
   }
   .form inputinput:focus {
     color: #333;
-    border: 1px solid #44c4e7;
+    border: 1px solid #540000;
   }
   .form button {
     cursor: pointer;
-    background: #44c4e7;
+    background: #540000;
     width: 100%;
     padding: 10px 15px;
     border: 0;
@@ -64,10 +68,15 @@ body {
     font-weight: 400;
   }
   .form button:hover {
-    background: #369cb8;
+    background: #8D0606;
   }
   .error,
   .valid {
     display: none;
+    text-align: center;
+    padding: none;
   }
-  
+p {
+  text-align: center;
+  color: "#540000";
+}
