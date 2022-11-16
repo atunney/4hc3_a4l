@@ -48,13 +48,33 @@ function appendChatMessage(chat) {
   );
 }
 
+function getCourses() {
+  return JSON.parse(localStorage.getItem("courses"));
+}
+
+function storeCourses(courses) {
+  localStorage.setItem("courses", JSON.stringify(courses));
+}
+
+function getTime() {
+  return new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 function sendChatMessage(message) {
   const chat = {
     type: "sent",
     message: message,
     from: "You",
-    timestamp: "Now",
+    timestamp: getTime(),
   };
+
+  const courses = getCourses();
+  courses[selectedCourse].channels[selectedChat].chats.push(chat);
+  storeCourses(courses);
+
   appendChatMessage(chat);
 }
 
@@ -110,14 +130,10 @@ function refreshChat(courses) {
 }
 
 function refresh() {
-  $.getJSON("database/discussions.json", function (json) {
-    const courses = json.courses;
-    refreshSidebar(courses);
-    refreshChat(courses);
-    scrollToBottomOfChat();
-  }).fail(function () {
-    console.log("An error has occurred while reading discussions.");
-  });
+  const courses = getCourses();
+  refreshSidebar(courses);
+  refreshChat(courses);
+  scrollToBottomOfChat();
 }
 
 function onChannelClick(courseName, channelName) {
@@ -127,6 +143,12 @@ function onChannelClick(courseName, channelName) {
 }
 
 $(function () {
+  $.getJSON("database/discussions.json", function (json) {
+    const courses = json.courses;
+    storeCourses(courses);
+  }).fail(function () {
+    console.log("An error has occurred while reading discussions.");
+  });
   refresh();
 
   scrollToBottomOfChat();
