@@ -83,11 +83,13 @@ body {
 
 .chat-text-wrapper-base {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 0;
+  min-height: 4rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   width: 100%;
@@ -123,6 +125,8 @@ body {
   background-color: #f9fafb;
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 1rem;
 }
 
 .to-chat-text-wrapper {
@@ -130,6 +134,8 @@ body {
   background-color: #dbeafe;
   border-top-right-radius: 0.75rem;
   border-top-left-radius: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 3rem;
 }
 
 .chat-receipt-wrapper {
