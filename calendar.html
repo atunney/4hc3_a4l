@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Avenue4Learning Calendar</title>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+        <!-- <style>
+            table, th, td {
+              border:1px solid black;
+            }
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            th {
+                width: 10vw;
+            }
+        </style> -->
+        <style>
+            td {
+                height: 15vh;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="events.css">
+    </head>
+
+    <body>
+        <!-- <table id="weekly">
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tues</th>
+                <th>Wed</th>
+                <th>Thurs</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td><div>a</div><div>c</div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table> -->
+
+        <button id="addNewEventModalBtn" class="btn">Add new event</button>
+        <div class="calendarHeader">
+            <h2 style="text-align: center;" id="todaysMonthYear"></h2>
+            <div class="col" align="center">
+              <button class="btn" onclick="prev()" style="margin-bottom: 2vh;">
+                <i class="fas fa-angle-left"></i>
+              </button>
+              <button class="btn" onclick="goToToday()" style="margin-bottom: 2vh;">Today</button>
+              <button class="btn" onclick="next()" style="margin-bottom: 2vh;">
+                <i class="fas fa-angle-right"></i>
+              </button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr id="daysOfWeek">
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tues</th>
+                <th>Wed</th>
+                <th>Thurs</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody id="calendarBody"></tbody>
+        </table>
+          <!-- <script>
+            $(document).ready(function(){
+              $('[data-toggle="popover"]').popover(); 
+            });
+          </script> -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="invalidDate" style="display: none;">Please enter the date in the format yyyy-mm-dd hh:mm AM/PM</div>
+                <div id="invalidTitle" style="display: none;">Please enter a title</div>
+                <form id="newEventForm">
+                    <label for="date">Date:</label><br>
+                    <input type="datetime-local" id="date" name="date" onchange="onChangeDate()"><br>
+                    <label for="title">Title:</label><br>
+                    <input type="text" id="title" name="title" oninput="onChangeTitle()">
+                </form>
+                <button id="submitNewEventBtn" class="btn" onclick="validateForm()">Submit</button>
+            </div>
+        
+        </div>
+        
+        <script src="buildCalendar.js"></script>
+    </body>
+</html>

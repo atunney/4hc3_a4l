@@ -1,0 +1,131 @@
+/* Responsiveness */
+/* Large Screens (Laptops + Tablets) */
+@media screen and (min-width: 501px) {
+    table {
+        width: 60vw;
+    }
+    .calendarHeader {
+        width: 60vw;
+    }
+}
+/* Small Screens (Phones) */ 
+@media screen and (max-width: 500px) {
+    table {
+        width: 90vw;
+    }
+    .calendarHeader {
+        width: 90vw;
+    }
+    #daysOfWeek {
+        font-size: 12px;
+    }
+}
+/* Calendar Styling */
+.calendarHeader {
+    margin: auto;
+    background-color: #7c1442;
+    color: white;
+    border-radius: 20px 20px 0px 0px;
+    max-height: 86px;
+}
+.calendarHeader > div {
+    vertical-align: middle;
+}
+#daysOfWeek {
+    background-color: #995577;
+    color: white;
+}
+table {
+    display: table;
+    margin: auto;
+    table-layout: fixed;
+}
+th {
+    text-align: center;
+}
+table, th, td {
+    border-style: solid;
+    border-width: 1px;
+}
+tbody > tr {
+    text-align: right;
+    font-size: 12px;
+    height: 50px;
+}
+td {
+    vertical-align: text-top;
+}
+/* Change Colour of Calendar Buttons */
+/*.btn:hover {
+    background-color: #995577;
+    border-color: #995577;
+    color: white;
+} */
+.btn:hover, .btn:active, .eventButton:focus {
+    background-color: white;
+    border-width: 2px;
+    border-color: #fdba2f;
+    color: #fdba2f;
+    /*outline: none;*/
+    outline-color: #fdba2f
+}
+.btn {
+    background-color: #fdba2f;
+    font-size: 12px;
+    color: #363739;
+    outline: none;
+}
+button:hover, button:focus, button:active {
+    outline: none !important;
+}
+.popover {
+    /*background-color: #bb9933;*/
+    background-color: #995577;
+    color: white;
+    font-size: 10px;
+}
+.popover-header {
+    /*background-color: #bb9933;*/
+    background-color: #995577;
+    color: white;
+    font-size: 12px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
