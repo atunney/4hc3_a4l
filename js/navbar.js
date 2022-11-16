@@ -1,14 +1,14 @@
 const paths = {
-  announcements: "/announcements.html",
-  content: "/content.html",
-  discussions: "/discussions.html",
-  calendar: "/calendar.html",
-  profile: "/",
-  settings: "/",
+  announcements: "announcements.html",
+  content: "content.html",
+  discussions: "discussions.html",
+  calendar: "calendar.html",
+  profile: "",
+  settings: "",
 };
 
 $(function () {
-  const pathname = window.location.pathname;
+  const pathname = window.location.pathname.split("/").pop();
   $("nav").append(
     `
         <a href="${paths.announcements}" class="navbar-item${

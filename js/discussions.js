@@ -143,12 +143,8 @@ function onChannelClick(courseName, channelName) {
 }
 
 $(function () {
-  $.getJSON("database/discussions.json", function (json) {
-    const courses = json.courses;
-    storeCourses(courses);
-  }).fail(function () {
-    console.log("An error has occurred while reading discussions.");
-  });
+  const courses = json.courses;
+  storeCourses(courses);
   refresh();
 
   scrollToBottomOfChat();
