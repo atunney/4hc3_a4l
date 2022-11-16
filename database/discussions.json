@@ -1,10 +1,10 @@
 {
-  "courses": [
-    {
+  "courses": {
+    "Course 1": {
       "name": "Course 1",
       "channels": {
         "professor": {
-          "name": "professor",
+          "name": "Professor",
           "chats": [
             {
               "type": "received",
@@ -20,8 +20,41 @@
               "status": "Seen"
             }
           ]
+        },
+        "ta": {
+          "name": "TA",
+          "chats": []
+        },
+        "classmates": {
+          "name": "Classmates",
+          "chats": []
+        },
+        "other": {
+          "name": "Other",
+          "chats": []
+        }
+      }
+    },
+    "Course 2": {
+      "name": "Course 2",
+      "channels": {
+        "professor": {
+          "name": "Professor",
+          "chats": []
+        },
+        "ta": {
+          "name": "TA",
+          "chats": []
+        },
+        "classmates": {
+          "name": "Classmates",
+          "chats": []
+        },
+        "other": {
+          "name": "Other",
+          "chats": []
         }
       }
     }
-  ]
+  }
 }

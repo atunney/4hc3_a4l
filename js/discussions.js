@@ -11,8 +11,8 @@ const chatClassNames = {
   },
 };
 
-const selectedCourse = "Course 1";
-const selectedChat = "professor";
+let selectedCourse = "Course 1",
+  selectedChat = "professor";
 
 function scrollToBottomOfChat() {
   $("main").animate({ scrollTop: $("main").prop("scrollHeight") }, 100);
@@ -67,19 +67,67 @@ function sendMessage() {
   }
 }
 
-$(function () {
-  $.getJSON("database/discussions.json", function (json) {
-    const courses = json.courses;
-    for (const course of courses) {
-      if (selectedCourse === course.name) {
-        for (const chat of course.channels[selectedChat].chats) {
-          appendChatMessage(chat);
-        }
+function refreshSidebar(courses) {
+  $(".course-tree-wrapper").empty();
+  for (const courseName in courses) {
+    const course = courses[courseName];
+    let courseHTML = $.parseHTML(
+      `
+        <div>
+        <h2 class="course-name-text">${course.name}</h2>
+        <div class="course-tree">
+          <ul class="mt-3" id="channel-list">
+          </ul>
+        </div>`
+    );
+    for (const channel in course.channels) {
+      const selectedChannel =
+        selectedCourse === course.name && channel === selectedChat;
+      $(courseHTML)
+        .find("#channel-list")
+        .append(
+          `<li onclick="onChannelClick('${course.name}', '${channel}');">
+            <span class="${selectedChannel ? "selected-channel" : ""}">
+                #${course.channels[channel].name}
+            </span>
+        </li>`
+        );
+    }
+    $(".course-tree-wrapper").append(courseHTML);
+  }
+}
+
+function refreshChat(courses) {
+  $(".chat-wrapper").empty();
+  for (const courseName in courses) {
+    const course = courses[courseName];
+    if (selectedCourse === courseName) {
+      for (const chat of course.channels[selectedChat].chats) {
+        appendChatMessage(chat);
       }
     }
+  }
+}
+
+function refresh() {
+  $.getJSON("database/discussions.json", function (json) {
+    const courses = json.courses;
+    refreshSidebar(courses);
+    refreshChat(courses);
+    scrollToBottomOfChat();
   }).fail(function () {
     console.log("An error has occurred while reading discussions.");
   });
+}
+
+function onChannelClick(courseName, channelName) {
+  selectedCourse = courseName;
+  selectedChat = channelName;
+  refresh();
+}
+
+$(function () {
+  refresh();
 
   scrollToBottomOfChat();
 
