@@ -5,18 +5,39 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 
-        <style>
-            td {
-                height: 15vh;
-            }
-        </style>
-        <link rel="stylesheet" type="text/css" href="events.css">
+        <link rel="stylesheet" type="text/css" href="calendar.css">
     </head>
 
     <body>
         <h1>Calendar</h1>
-        <!-- <table id="weekly">
-            <tr>
+
+        <div class="row">
+            <div class="col">
+                <form style="float: right;">
+                    <input type="radio" id="weeklyView" name="view" value="weeklyView" onchange="toggleCalendarView()" checked>
+                    <label for="weeklyView">Weekly View</label><br>
+                    <input type="radio" id="monthlyView" name="view" value="monthlyView" onchange="toggleCalendarView()">
+                    <label for="monthlyView">Monthly View</label>
+                </form>
+            </div>
+            <div class="col"><button id="addNewEventModalBtn" class="btn" style="float: left;">Add new event</button></div>
+        </div>
+
+        <div class="calendarHeader" id="weeklyCalendarHeader">
+            <h2 style="text-align: center;" id="todaysWeek"></h2>
+            <div class="col" align="center">
+              <button class="btn" onclick="prevWeek()" style="margin-bottom: 2vh;">
+                <i class="fas fa-angle-left"></i>
+              </button>
+              <button class="btn" onclick="goToThisWeek()" style="margin-bottom: 2vh;">Today</button>
+              <button class="btn" onclick="nextWeek()" style="margin-bottom: 2vh;">
+                <i class="fas fa-angle-right"></i>
+              </button>
+            </div>
+          </div>
+        <table id="weekly">
+            <thead>
+            <tr id="daysOfWeek">
                 <th>Sun</th>
                 <th>Mon</th>
                 <th>Tues</th>
@@ -25,19 +46,19 @@
                 <th>Fri</th>
                 <th>Sat</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td><div>a</div><div>c</div></td>
+            </thead>
+            <tr style="height: 70vh;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
-        </table> -->
+        </table>
 
-        <button id="addNewEventModalBtn" class="btn">Add new event</button>
-        <div class="calendarHeader">
+        <div class="calendarHeader" id="monthlyCalendarHeader" style="display: none;">
             <h2 style="text-align: center;" id="todaysMonthYear"></h2>
             <div class="col" align="center">
               <button class="btn" onclick="prev()" style="margin-bottom: 2vh;">
@@ -49,7 +70,7 @@
               </button>
             </div>
           </div>
-          <table>
+          <table id="monthly" style="display: none;">
             <thead>
               <tr id="daysOfWeek">
                 <th>Sun</th>
@@ -63,14 +84,9 @@
             </thead>
             <tbody id="calendarBody"></tbody>
         </table>
-          <!-- <script>
-            $(document).ready(function(){
-              $('[data-toggle="popover"]').popover(); 
-            });
-          </script> -->
 
         <!-- The Modal -->
-        <div id="myModal" class="modal">
+        <div id="createNewEventModal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">

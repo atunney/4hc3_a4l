@@ -7,10 +7,10 @@ currentYear = today.getFullYear();
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 // Declare Array of Events
-eventObject1 = {date: new Date(2022, 9, 5, 19), title: "Cool Event", description: "Description"};
-eventObject2 = {date: new Date(2022, 9, 10, 19), title: "Cool Event", description: "Description"};
-eventObject3 = {date: new Date(2022, 8, 5, 19), title: "Cool Event", description: "Description"};
-eventObject4 = {date: new Date(2022, 8, 10, 19), title: "Cool Event", description: "Description"};
+eventObject1 = {date: new Date(2022, 10, 5), title: "Course 1 Assignment 2 Due"};
+eventObject2 = {date: new Date(2022, 10, 10), title: "Course 2 Quiz 5 Due"};
+eventObject3 = {date: new Date(2022, 10, 15), title: "Course 3 Midterm"};
+eventObject4 = {date: new Date(2022, 10, 20), title: "Course 1 Assignment 3 Due"};
 eventsArray = [eventObject1, eventObject2, eventObject3, eventObject4];
 
 // Call Functions to Create Calendar
@@ -88,14 +88,10 @@ function goToToday() {
 }
 
 function displayEvent(eventDetails) {
-	eventButton = document.createElement("button");
-	eventButton.setAttribute("class", "btn btn-sm btn-block eventButton");
-	eventButton.setAttribute("data-toggle", "popover");
-	eventButton.setAttribute("data-title", eventDetails["title"]);
-	eventButton.setAttribute("data-content", eventDetails["description"]);
-	eventButton.setAttribute("data-trigger", "focus");
-	eventButton.innerHTML = eventDetails["title"];
-	return eventButton;
+    eventDisplay = document.createElement("div");
+    eventDisplay.setAttribute("class", "eventDisplay");
+    eventDisplay.innerHTML = eventDetails["title"];
+    return eventDisplay;
 }
 
 function eventCheck(eventDetails, year, month, day) {
@@ -130,12 +126,82 @@ function addNewEvent() {
     showCalendar(currentMonth, currentYear);
 
     document.getElementById("newEventForm").reset();
-    document.getElementById("myModal").style.display = "none";
+    document.getElementById("createNewEventModal").style.display = "none";
+}
+
+// Set up weekly calendar
+var curr = new Date;
+var sunday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
+var saturday = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
+
+document.getElementById("todaysWeek").innerHTML = "Week of " + sunday.getFullYear() + "-" + (sunday.getMonth()+1) + "-" + sunday.getDate() + " to " + saturday.getFullYear() + "-" + (saturday.getMonth()+1) + "-" + saturday.getDate();
+showWeeklyEvents(sunday, saturday);
+
+var currentWeek = sunday;
+
+function toggleCalendarView() {
+    if (document.querySelector('input[name="view"]:checked').value == "weeklyView") {
+        document.getElementById("weeklyCalendarHeader").style.display = "block";
+        document.getElementById("weekly").style.display = "block";
+        document.getElementById("monthlyCalendarHeader").style.display = "none";
+        document.getElementById("monthly").style.display = "none";
+        goToThisWeek();
+    } else {
+        document.getElementById("weeklyCalendarHeader").style.display = "none";
+        document.getElementById("weekly").style.display = "none";
+        document.getElementById("monthlyCalendarHeader").style.display = "block";
+        document.getElementById("monthly").style.display = "block";
+        showCalendar(currentMonth, currentYear);
+    }
+}
+
+function prevWeek() {
+    var firstday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate()-7);
+    var lastday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate()-1);
+    currentWeek = firstday;
+    
+    document.getElementById("todaysWeek").innerHTML = "Week of " + firstday.getFullYear() + "-" + (firstday.getMonth()+1) + "-" + firstday.getDate() + " to " + lastday.getFullYear() + "-" + (lastday.getMonth()+1) + "-" + lastday.getDate();    
+    showWeeklyEvents(firstday, lastday);
+}
+
+function nextWeek() {
+    var firstday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate()+7);
+    var lastday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate()+13);
+    currentWeek = firstday;
+    
+    document.getElementById("todaysWeek").innerHTML = "Week of " + firstday.getFullYear() + "-" + (firstday.getMonth()+1) + "-" + firstday.getDate() + " to " + lastday.getFullYear() + "-" + (lastday.getMonth()+1) + "-" + lastday.getDate();
+    showWeeklyEvents(firstday, lastday);
+}
+
+function goToThisWeek() {
+    var curr = new Date;
+    var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
+    var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
+
+    document.getElementById("todaysWeek").innerHTML = "Week of " + firstday.getFullYear() + "-" + (firstday.getMonth()+1) + "-" + firstday.getDate() + " to " + lastday.getFullYear() + "-" + (lastday.getMonth()+1) + "-" + lastday.getDate();
+    showWeeklyEvents(firstday, lastday);
+}
+
+function showWeeklyEvents(firstday, lastday) {
+    var weeklyDays = document.getElementsByTagName("td");
+    for (weeklyDay of weeklyDays) {
+        weeklyDay.innerHTML = '';
+    }
+    for (eventItem of eventsArray) {
+        if (eventItem["date"] >= firstday && eventItem["date"] <= lastday) {
+            const diffTime = Math.abs(eventItem["date"] - firstday);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            var eventDisplay = displayEvent(eventItem);
+            eventDisplay.style.marginTop = (diffDays * 50) + "px";
+            weeklyDays[diffDays].appendChild(eventDisplay);
+        }
+    }
 }
 
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("createNewEventModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("addNewEventModalBtn");
