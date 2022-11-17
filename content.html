@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- https://pdfobject.com/ -->
+  <style>
+    .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
+  </style>
+
   <head>
+    <link rel="stylesheet" href="content.css">
     <title>Avenue4Learning - Content</title>
   </head>
 
   <body>
     <main>
       <h1>Content</h1>
+        <div class="CourseListTab">
+          <button class="CourseTablinks" onclick="openCourse(event, 'Course1')" id="defaultOpen">Course 1</button>
+          <button class="CourseTablinks" onclick="openCourse(event, 'Course2')">Course 2</button>
+          <button class="CourseTablinks" onclick="openCourse(event, 'Course3')">Course 3</button>
+        </div>
+        <div class="CourseTab" id="Course1Tab">
+          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Lectures')">Lectures</button>
+          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Readings')">Readings</button>
+          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Assignments')">Assignments</button>
+        </div>
+
+        <div id="Course1Lectures" class="CourseContent">
+          <div id="Course1Lecture1pdf"></div>
+        </div>
+
+        <div id="Course1Readings" class="CourseContent">
+          <h3>Course 1 Reading 1</h3>
+          <p>Course1.</p>
+        </div>
+        
+        <script>
+        function openCourse(evt, courseName) {
+          var i, courseTab, tablinks;
+          courseTab = document.getElementsByClassName("CourseTab");
+          for (i = 0; i < courseTab.length; i++) {
+            courseTab[i].style.display = "none";
+          }
+          closeCourseContent()
+          tablinks = document.getElementsByClassName("CourseTablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(courseName+'Tab').style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        function openCourseContent(evt, courseName) {
+          var i, courseContent, tablinks;
+          courseContent = document.getElementsByClassName("CourseContent");
+          for (i = 0; i < courseContent.length; i++) {
+            courseContent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("ContentTablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(courseName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        function closeCourseContent() {
+          var courseContent;
+          courseContent = document.getElementsByClassName("CourseContent");
+          for (i = 0; i < courseContent.length; i++) {
+            courseContent[i].style.display = "none";
+          }
+        }
+        </script>
+        <!-- Load pdf to appropriate content section. Hardcode for all? -->
+        <script src="./pdf/pdfobject.js"></script>
+        <script>PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture1pdf");</script>
     </main>
   </body>
 </html>
