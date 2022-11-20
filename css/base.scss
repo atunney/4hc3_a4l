@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  background-color: #f5f7fa;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.content-side {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.main {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  /* overflow: auto; */
+}

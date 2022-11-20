@@ -1,22 +1,30 @@
+.announcements-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
 .annoucementWindow {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    /* background: #fff; */
-    width: 50%;
-    height: 50%;
-    /* margin: -140px 0 0 -182px;
-    padding: 40px; */
-    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 1rem;
+    padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 .annoucementMessageBox{
     /* padding-bottom: 10px; */
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    outline: auto;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    padding: 1.2rem;
+    /* outline: auto; */
+    /* border: 1px solid #60a5fa; */
+    border-radius: 1.5rem;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .annoucementMessageTitle {
