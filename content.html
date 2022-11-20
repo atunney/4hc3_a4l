@@ -3,17 +3,42 @@
   <head>
     <link rel="stylesheet" href="content.css">
     <title>Avenue4Learning - Content</title>
+    <link href="css/minified/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="js/minified/fontawesome-all.min.js"></script>
+    <script src="js/minified/tailwind-3.2.4.min.js"></script>
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/sidebar.css" rel="stylesheet" />
   </head>
 
   <body>
+    <div class="flex full-height">
+      <aside class="sidebar">
+        <div class="logo-wrapper">
+          <h1 class="logo-text">A4L</h1>
+        </div>
+        <div class="sidebar-courses-list">
+          <button class="sidebar-courses-list-item" onclick="openCourse('Course1');" id="defaultOpen">
+            Course 1
+          </button>
+          <button class="sidebar-courses-list-item" onclick="openCourse('Course2');">
+            Course 2
+          </button>
+          <button class="sidebar-courses-list-item" onclick="openCourse('Course3');">
+            Course 3
+          </button>
+      </div>
+      </aside>
+      <section class="content-side">
     <main>
-      <h1>Content</h1>
-        <div class="CourseListTab">
+        <nav class="navbar"></nav>
+        <!-- <div class="CourseListTab">
           <button class="CourseTablinks" onclick="openCourse(event, 'Course1')" id="defaultOpen">Course 1</button>
           <button class="CourseTablinks" onclick="openCourse(event, 'Course2')">Course 2</button>
           <button class="CourseTablinks" onclick="openCourse(event, 'Course3')">Course 3</button>
           <button class="CourseTablinks" onclick="openCourse(event, 'Course4')">Course 4</button>
-        </div>
+        </div> -->
+        <div class="course-content-wrapper">
         <div class="CourseTab" id="Course1Tab">
           <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Lectures')">Lectures</button>
           <div class="CourseContentListing" id="Course1Lectures">
@@ -72,7 +97,12 @@
             </div>
           </div>
         </div>
-
+      </div>
+      </main>
+    </section>
+    </div>
+        <script src="jquery.min.js"></script>
+        <script src="js/navbar.js"></script>
         <script src="./content.js"></script>
         <script src="./pdf/pdfobject.js"></script>
         <script>
@@ -81,6 +111,5 @@
           PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture3pdf");
           PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Reading1pdf");
         </script>
-    </main>
   </body>
 </html>

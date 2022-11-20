@@ -1,6 +1,27 @@
-var commentDisable = true
-var currentContent = ""
-function openCourse(evt, courseName) {
+
+let selectedCourse = "Course 1";
+
+function updateSidebarCourses() {
+  $(".sidebar-courses-list-item.selected").removeClass("selected");
+  $(`.sidebar-courses-list-item:contains('${selectedCourse}')`).addClass(
+    "selected"
+  );
+}
+
+function refresh() {
+  updateSidebarCourses();
+}
+
+$(function () {
+  openCourse(selectedCourse.split(" ").join(""));
+});
+
+var commentDisable = true;
+var currentContent = "";
+function openCourse(courseName) {
+  selectedCourse = courseName.split("Course").join(" ");
+  refresh();
+  
   var i, courseTab, tablinks;
   courseTab = document.getElementsByClassName("CourseTab");
   for (i = 0; i < courseTab.length; i++) {
@@ -8,12 +29,14 @@ function openCourse(evt, courseName) {
   }
   closeCourseContentListing()
   closeCourseContent()
-  tablinks = document.getElementsByClassName("CourseTablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  // tablinks = document.getElementsByClassName("CourseTablinks");
+  // for (i = 0; i < tablinks.length; i++) {
+  //   tablinks[i].className = tablinks[i].className.replace(" active", "");
+  // }
+  const courseNameTab = document.getElementById(`${courseName}Tab`);
+  if (courseNameTab !== null){
+    courseNameTab.style.display = "flex"
   }
-  document.getElementById(courseName+'Tab').style.display = "block";
-  evt.currentTarget.className += " active";
 }
 
 function openCourseContentListing(evt, courseName) {
