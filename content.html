@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- https://pdfobject.com/ -->
-  <style>
-    .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
-  </style>
-
   <head>
     <link rel="stylesheet" href="content.css">
     <title>Avenue4Learning - Content</title>
@@ -17,63 +12,75 @@
           <button class="CourseTablinks" onclick="openCourse(event, 'Course1')" id="defaultOpen">Course 1</button>
           <button class="CourseTablinks" onclick="openCourse(event, 'Course2')">Course 2</button>
           <button class="CourseTablinks" onclick="openCourse(event, 'Course3')">Course 3</button>
+          <button class="CourseTablinks" onclick="openCourse(event, 'Course4')">Course 4</button>
         </div>
         <div class="CourseTab" id="Course1Tab">
-          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Lectures')">Lectures</button>
-          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Readings')">Readings</button>
-          <button class="ContentTablinks" onclick="openCourseContent(event, 'Course1Assignments')">Assignments</button>
+          <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Lectures')">Lectures</button>
+          <div class="CourseContentListing" id="Course1Lectures">
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Lecture1')">Lecture 1</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Lecture2')">Lecture 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Lecture3')">Lecture 3</button>
+          </div>
+          <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Readings')">Readings</button>
+          <div class="CourseContentListing" id="Course1Readings">
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading1')">Reading 1</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading2')">Reading 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading3')">Reading 3</button>
+          </div>
+          <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Assignments')">Assignments</button>
         </div>
 
-        <div id="Course1Lectures" class="CourseContent">
+        <div id="Course1Lecture1" class="CourseContent">
           <div id="Course1Lecture1pdf"></div>
         </div>
 
-        <div id="Course1Readings" class="CourseContent">
-          <h3>Course 1 Reading 1</h3>
-          <p>Course1.</p>
+        <div id="Course1Lecture2" class="CourseContent">
+          <div id="Course1Lecture2pdf"></div>
+        </div>
+
+        <div id="Course1Lecture3" class="CourseContent">
+          <div id="Course1Lecture3pdf"></div>
+        </div>
+
+        <div id="Course1Reading1" class="CourseContent">
+          <div id="Course1Reading1pdf"></div>
         </div>
         
-        <script>
-        function openCourse(evt, courseName) {
-          var i, courseTab, tablinks;
-          courseTab = document.getElementsByClassName("CourseTab");
-          for (i = 0; i < courseTab.length; i++) {
-            courseTab[i].style.display = "none";
-          }
-          closeCourseContent()
-          tablinks = document.getElementsByClassName("CourseTablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(courseName+'Tab').style.display = "block";
-          evt.currentTarget.className += " active";
-        }
+        <div class="CommentTab">
+          <button onclick="toggleComments()">Comments</button>
+          <!-- <div class="CommentListing" id="Comment"></div> -->
+          <div class="CommentListing" id="CommentCourse1Lecture1">
+            <div class="Comment">
+              <div class="CommentText">What does A refer to?</div>
+              <div class="CommentAuthor">Billy</div>
+            </div>
+            <div class="Comment">
+              <div class="CommentTextSelf">I dunno man.</div>
+              <div class="CommentAuthorSelf">You</div>
+            </div>
+          </div>
+          <div class="CommentListing" id="CommentCourse1Lecture2">
+            <div class="Comment">
+              <div class="CommentText">Isn't this the same as lecture 1?</div>
+              <div class="CommentAuthor">Billy</div>
+            </div>
+          </div>
+          <div class="CommentListing" id="CommentCourse1Reading1">
+            <div class="Comment">
+              <div class="CommentText">Nice it's a short one.</div>
+              <div class="CommentAuthor">Bobby</div>
+            </div>
+          </div>
+        </div>
 
-        function openCourseContent(evt, courseName) {
-          var i, courseContent, tablinks;
-          courseContent = document.getElementsByClassName("CourseContent");
-          for (i = 0; i < courseContent.length; i++) {
-            courseContent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("ContentTablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(courseName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-
-        function closeCourseContent() {
-          var courseContent;
-          courseContent = document.getElementsByClassName("CourseContent");
-          for (i = 0; i < courseContent.length; i++) {
-            courseContent[i].style.display = "none";
-          }
-        }
-        </script>
-        <!-- Load pdf to appropriate content section. Hardcode for all? -->
+        <script src="./content.js"></script>
         <script src="./pdf/pdfobject.js"></script>
-        <script>PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture1pdf");</script>
+        <script>
+          PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture1pdf");
+          PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture2pdf");
+          PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Lecture3pdf");
+          PDFObject.embed("./pdf/Course1Lecture1.pdf", "#Course1Reading1pdf");
+        </script>
     </main>
   </body>
 </html>

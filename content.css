@@ -3,8 +3,8 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 10%;
-    height: 300px;
-  }
+    /* height: 300px; */
+}
   
 .CourseListTab button {
     display: block;
@@ -42,10 +42,40 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 10%;
-    height: 300px;
+    /* height: 300px; */
   }
   
 .CourseTab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+} 
+
+.CourseContentListing button:hover {
+    background-color: #ddd;
+}
+  
+.CourseContentListing button.active {
+    background-color: #ccc;
+}
+
+.CourseContentListing {
+    display: none;
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  
+.CourseContentListing button {
     display: block;
     background-color: inherit;
     color: black;
@@ -63,8 +93,63 @@
     display: none;
     float: left;
     padding: 0px 12px;
+    width: 65%;
+    height: 100%;
+}
+
+.CommentTab {
+    float: right;
     border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
-    height: 300px;
+    background-color: #f1f1f1;
+    height: 80%;
+    width: 15%;
+    position: absolute;
+    overflow: auto;
+    right: 0%;
+}
+
+.CommentTab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.CommentListing {
+    display: none;
+    /* margin: 0.5em; */
+    border: auto;
+    border-style: solid;
+}
+
+.Comment {
+    margin: 0.5em;
+    border: auto;
+    border-style: solid;
+}
+
+.CommentAuthor {
+    text-align: left;
+}
+
+.CommentText {
+    text-align: left;
+}
+
+.CommentAuthorSelf {
+    text-align: right;
+}
+
+.CommentTextSelf {
+    text-align: right;
+}
+
+.pdfobject-container {
+    height: 30rem; border: 1rem solid rgba(0,0,0,.1);
 }
