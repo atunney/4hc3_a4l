@@ -19,15 +19,18 @@
             <h1 class="logo-text">A4L</h1>
           </div>
           <div class="sidebar-courses-list">
-            <a class="sidebar-courses-list-item">
+            <button class="sidebar-courses-list-item selected" onclick="onCourseClick('All Courses');">
+              All Courses
+            </button>
+            <button class="sidebar-courses-list-item" onclick="onCourseClick('Course 1');">
               Course 1
-            </a>
-            <a class="sidebar-courses-list-item">
+            </button>
+            <button class="sidebar-courses-list-item" onclick="onCourseClick('Course 2');">
               Course 2
-            </a>
-            <a class="sidebar-courses-list-item">
+            </button>
+            <button class="sidebar-courses-list-item" onclick="onCourseClick('Course 3');">
               Course 3
-            </a>
+            </button>
         </div>
         </aside>
     <section class="content-side">
@@ -120,7 +123,13 @@
                     <label for="date">Date:</label><br>
                     <input type="datetime-local" id="date" name="date" onchange="onChangeDate()"><br>
                     <label for="title">Title:</label><br>
-                    <input type="text" id="title" name="title" oninput="onChangeTitle()">
+                    <input type="text" id="title" name="title" oninput="onChangeTitle()" class="border-2 border-blue-200 rounded-lg">
+                    <label for="courses" class="block mt-2">Select a course:</label>
+                    <select id="courses" class="border-blue-200 p-2 rounded-lg mb-2">
+                      <option value="Course 1" selected>Course 1</option>
+                      <option value="Course 2">Course 2</option>
+                      <option value="Course 3">Course 3</option>
+                    </select>
                 </form>
                 <button id="submitNewEventBtn" class="btn" onclick="validateForm()">Submit</button>
             </div>
