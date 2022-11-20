@@ -1,3 +1,10 @@
+.calendar-wrapper {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1.5rem;
+}
+
 /* Responsiveness */
 /* Large Screens (Laptops + Tablets) */
 @media screen and (min-width: 501px) {
