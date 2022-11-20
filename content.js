@@ -73,5 +73,7 @@ function toggleComments() {
   for (i = 0; i < comments.length; i++) {
     comments[i].style.display = "none";
   }
+  document.getElementById("CommentNub").style.display = commentDisable ? "block" : "none";
+  document.getElementById("CommentTab").style.display = commentDisable ? "none" : "block";
   document.getElementById("Comment" + currentContent).style.display = commentDisable ? "none" : "block";
 }
