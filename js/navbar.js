@@ -18,7 +18,7 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-bullhorn scale-110"></i>
             </div>
-            <span class="navbar-text">Announcements</span>
+            <span class="navbar-text-content">Announcements</span>
           </div>
         </a>
         <a href="${paths.content}" class="navbar-item${
@@ -28,7 +28,7 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-book-open scale-110"></i>
             </div>
-            <span class="navbar-text">Content</span>
+            <span class="navbar-text-content">Content</span>
           </div>
         </a>
         <a href="${paths.discussions}" class="navbar-item${
@@ -38,7 +38,7 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-comment scale-110"></i>
             </div>
-            <span class="navbar-text">Discussions</span>
+            <span class="navbar-text-content">Discussions</span>
           </div>
         </a>
         <a href="${paths.calendar}" class="navbar-item${
@@ -48,13 +48,13 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-calendar scale-110"></i>
             </div>
-            <span class="navbar-text">Calender</span>
+            <span class="navbar-text-content">Calender</span>
           </div>
         </a>
         <a href="${paths.profile}" class="navbar-item">
           <div class="navbar-item-content-wrapper">
             <div class="navbar-icon bg-gray-200 rounded-xl mr-2">HA</div>
-            <span class="navbar-text">Himanshu</span>
+            <span class="navbar-text-content">Himanshu</span>
           </div>
         </a>
         <a href="${paths.settings}" class="navbar-item">
@@ -62,7 +62,7 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-gear scale-125"></i>
             </div>
-            <span class="navbar-text">Settings</span>
+            <span class="navbar-text-content">Settings</span>
           </div>
         </a>
           `
