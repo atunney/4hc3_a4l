@@ -6,10 +6,33 @@
 }
 
 .course-name-text {
-  color: #111827;
-  font-size: 1.5rem;
+  display: flex;
+  font-size: 1.2rem;
   line-height: 2rem;
   font-weight: 400;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #eff6ff;
+  align-items: center;
+  width: 100%;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-color: #bfdbfe;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.course-name-text:hover {
+  border-color: #60a5fa;
+  scale: 105%;
+}
+.course-name-text.selected {
+  border-color: #60a5fa;
+  scale: 105%;
+  color: #60a5fa;
+  font-weight: 700;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .selected-channel {
@@ -197,9 +220,22 @@
   font-weight: 600;
   padding-left: 20px;
 }
-
 .course-tree li:hover {
   font-weight: 700;
+}
+
+:hover > .channel-item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-color: #dbeafe;
+  border-width: 2px;
+  border-style: solid;
+  color: #60a5fa;
+  border-radius: 1rem;
+  transition-property: all;
+  transition-duration: 100ms;
 }
 
 .course-tree li:not(:last-child) {

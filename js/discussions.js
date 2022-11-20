@@ -94,7 +94,14 @@ function refreshSidebar(courses) {
     let courseHTML = $.parseHTML(
       `
         <div>
-        <h2 class="course-name-text">${course.name}</h2>
+        <h2 
+        class="course-name-text${
+          course.name === selectedCourse ? " selected" : ""
+        }"
+        onclick="onCourseClick('${course.name}');"
+        >
+          ${course.name}
+        </h2>
         <div class="course-tree">
           <ul class="mt-3" id="channel-list">
           </ul>
@@ -107,7 +114,7 @@ function refreshSidebar(courses) {
         .find("#channel-list")
         .append(
           `<li onclick="onChannelClick('${course.name}', '${channel}');">
-            <span class="${selectedChannel ? "selected-channel" : ""}">
+            <span class="${selectedChannel ? "selected-channel " : ""}channel-item">
                 #${course.channels[channel].name}
             </span>
         </li>`
@@ -139,6 +146,12 @@ function refresh() {
 function onChannelClick(courseName, channelName) {
   selectedCourse = courseName;
   selectedChat = channelName;
+  refresh();
+}
+
+function onCourseClick(courseName) {
+  selectedCourse = courseName;
+  selectedChat = "professor";
   refresh();
 }
 
