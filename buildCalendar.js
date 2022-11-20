@@ -1,3 +1,27 @@
+const ALL_COURSES = "All Courses";
+let selectedCourse = ALL_COURSES;
+
+function updateSidebarCourses() {
+  $(".sidebar-courses-list-item.selected").removeClass("selected");
+  if (selectedCourse === ALL_COURSES) {
+    $(".sidebar-courses-list-item:first").addClass("selected");
+  } else {
+    $(`.sidebar-courses-list-item:contains('${selectedCourse}')`).addClass(
+      "selected"
+    );
+  }
+}
+
+function refresh() {
+  refreshCalendars();
+  updateSidebarCourses();
+}
+
+function onCourseClick(courseName) {
+  selectedCourse = courseName;
+  refresh();
+}
+
 // Get Today's Date
 today = new Date();
 currentMonth = today.getMonth();
@@ -7,14 +31,17 @@ currentYear = today.getFullYear();
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 // Declare Array of Events
-eventObject1 = {date: new Date(2022, 10, 5), title: "Course 1 Assignment 2 Due"};
-eventObject2 = {date: new Date(2022, 10, 10), title: "Course 2 Quiz 5 Due"};
-eventObject3 = {date: new Date(2022, 10, 15), title: "Course 3 Midterm"};
-eventObject4 = {date: new Date(2022, 10, 20), title: "Course 1 Assignment 3 Due"};
+eventObject1 = {date: new Date(2022, 10, 5), title: "Assignment 2 Due", course: "Course 1"};
+eventObject2 = {date: new Date(2022, 10, 10), title: "Quiz 5 Due", course: "Course 2"};
+eventObject3 = {date: new Date(2022, 10, 15), title: "Midterm", course: "Course 3"};
+eventObject4 = {date: new Date(2022, 10, 20), title: "Assignment 3 Due", course: "Course 1"};
 eventsArray = [eventObject1, eventObject2, eventObject3, eventObject4];
 
 // Call Functions to Create Calendar
-showCalendar(currentMonth, currentYear);
+$(function () {
+    refreshCalendars();
+});
+
 
 // Calculate Number of Days in Any Given Month
 function numDaysInMonth(month, year) {
@@ -87,10 +114,14 @@ function goToToday() {
 	showCalendar(currentMonth, currentYear);
 }
 
+function refreshMonthlyCalendar() {
+    showCalendar(currentMonth, currentYear);
+}
+
 function displayEvent(eventDetails) {
     eventDisplay = document.createElement("div");
     eventDisplay.setAttribute("class", "eventDisplay");
-    eventDisplay.innerHTML = eventDetails["title"];
+    eventDisplay.innerHTML = `${eventDetails["course"]}: ${eventDetails["title"]}`;
     return eventDisplay;
 }
 
@@ -102,9 +133,12 @@ function eventCheck(eventDetails, year, month, day) {
 }
 
 function eventToday(eventDetails, year, month, day) {
+    if (selectedCourse !== ALL_COURSES) {
+        eventDetails = eventDetails.filter(event => event.course === selectedCourse)
+    }
 	for (i = 0; i < eventDetails.length; i++) {
-		if (eventCheck(eventsArray[i], year, month, day)) {
-			return displayEvent(eventsArray[i]);
+		if (eventCheck(eventDetails[i], year, month, day)) {
+			return displayEvent(eventDetails[i]);
 		}
 	}
 	return document.createElement("br");
@@ -118,12 +152,13 @@ function addNewEvent() {
     var time = dateString[1].split(":");
 
     var title = document.getElementById("title").value;
+    var course = document.getElementById("courses").value;
 
     var date = new Date(parseInt(day[0]), parseInt(day[1])-1, parseInt(day[2]), parseInt(time[0]), parseInt(time[1]));
 
-    eventObject = {date: date, title: title, description: "Description"};
+    eventObject = {date: date, title: title, course: course, description: "Description"};
     eventsArray.push(eventObject);
-    showCalendar(currentMonth, currentYear);
+    refreshCalendars();
 
     document.getElementById("newEventForm").reset();
     document.getElementById("createNewEventModal").style.display = "none";
@@ -173,6 +208,12 @@ function nextWeek() {
     showWeeklyEvents(firstday, lastday);
 }
 
+function refreshWeeklyCalender() {
+    var firstday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate());
+    var lastday = new Date(currentWeek.getFullYear(), currentWeek.getMonth(), currentWeek.getDate()+7);
+    showWeeklyEvents(firstday, lastday);
+}
+
 function goToThisWeek() {
     var curr = new Date;
     var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
@@ -187,7 +228,12 @@ function showWeeklyEvents(firstday, lastday) {
     for (weeklyDay of weeklyDays) {
         weeklyDay.innerHTML = '';
     }
-    for (eventItem of eventsArray) {
+    let events = [...eventsArray];
+    if (selectedCourse !== ALL_COURSES) {
+        events = events.filter(event => event.course === selectedCourse)
+    }
+
+    for (eventItem of events) {
         if (eventItem["date"] >= firstday && eventItem["date"] <= lastday) {
             const diffTime = Math.abs(eventItem["date"] - firstday);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -196,6 +242,14 @@ function showWeeklyEvents(firstday, lastday) {
             eventDisplay.style.marginTop = (diffDays * 50) + "px";
             weeklyDays[diffDays].appendChild(eventDisplay);
         }
+    }
+}
+
+function refreshCalendars() {
+    if (document.querySelector('input[name="view"]:checked').value == "weeklyView") {
+        refreshWeeklyCalender();
+    } else {
+        refreshMonthlyCalendar();
     }
 }
 
