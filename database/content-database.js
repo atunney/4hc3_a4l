@@ -88,7 +88,13 @@ const json = {
         },
         Assignments: {
           "Assignment 1": {
-            comments: [],
+            comments: [
+              {
+                type: "received",
+                from: "Bobby",
+                message: "Dang there goes my plan.",
+              },
+            ],
           },
           "Assignment 2": {
             comments: [],
