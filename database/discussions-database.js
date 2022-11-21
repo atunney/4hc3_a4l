@@ -46,7 +46,15 @@ const json = {
         },
         ta: {
           name: "TA",
-          chats: [],
+          chats: [
+            {
+              type: "sent",
+              from: "You",
+              timestamp: "10:20AM",
+              message:
+                "Hello, are you able to explain the mark distribution for Assignment 2? I'm not sure why I lost so many marks on the second question. Thank you!",
+            },
+          ],
         },
         classmates: {
           name: "Classmates",
