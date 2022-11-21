@@ -73,7 +73,7 @@ $(function () {
             <div class="navbar-icon">
               <i class="fa-solid fa-calendar scale-110"></i>
             </div>
-            <span class="navbar-text-content">Calender</span>
+            <span class="navbar-text-content">Calendar</span>
           </div>
         </a>
         <div class="navbar-item navbar-dropdown-wrapper">
