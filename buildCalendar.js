@@ -43,6 +43,8 @@ months = [
   "December",
 ];
 
+heldEvent = null;
+
 // Declare Array of Events
 eventObject1 = {
   date: new Date(2022, 10, 5),
@@ -166,15 +168,18 @@ function partition(array, filter) {
 //if any existing event is clicked:
 $(document).on("click", ".eventDisplay", function (e) {
   [course, title] = e.target.innerHTML.split(": ");
-  e.target.remove(); //remove div from display
 
   //fetch event details, and remove it from eventsArray
   [eventsArray, clickedEvent] = partition(eventsArray, function (event) {
     return event.course != course || event.title != title;
   });
   event = clickedEvent[0]; //for now assume uniqueness, just do first event
+  heldEvent = event; //hold in case close modal without submitting
 
   modal.style.display = "block"; //open modal
+
+  //time offset for EST
+  event.date.setHours(event.date.getHours() - 5);
 
   //populate with clicked event details
   document.getElementById("date").value = event.date.toISOString().slice(0, -1);
@@ -208,8 +213,6 @@ function eventToday(eventDetails, year, month, day) {
 }
 
 function addNewEvent() {
-  console.log();
-
   var dateString = document.getElementById("date").value.split("T");
 
   var day = dateString[0].split("-");
@@ -426,15 +429,23 @@ btn.onclick = function () {
   document.getElementById("date").value = now.toISOString().slice(0, -1);
 };
 
+function closeModal() {
+  modal.style.display = "none";
+  if (heldEvent != null) {
+    eventsArray.push(heldEvent);
+    heldEvent = null;
+  }
+}
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-  modal.style.display = "none";
+  closeModal();
 };
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    closeModal();
   }
 };
 
