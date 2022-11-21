@@ -8,6 +8,7 @@
     <script src="js/minified/tailwind-3.2.4.min.js"></script>
     <link href="css/base.css" rel="stylesheet" />
     <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/chat.css" rel="stylesheet" />
     <link href="css/sidebar.css" rel="stylesheet" />
   </head>
 
@@ -103,29 +104,22 @@
         <div class="CommentPanel">
           <button class="CommentNub" id="CommentNub" onclick="toggleComments()"><i class="fa-solid fa-chevron-left"></i></button>
           <div class="CommentTab" id="CommentTab">
-            <button onclick="toggleComments()">Comments <i class="fa-solid fa-chevron-right"></i></button>
-            <div class="CommentListing" id="CommentCourse1Lecture1">
-              <div class="Comment">
-                <div class="CommentText">I don't get it.</div>
-                <div class="CommentAuthor">--Billy</div>
-              </div>
-              <div class="Comment">
-                <div class="CommentTextSelf">You'll find out soon enough.</div>
-                <div class="CommentAuthorSelf">--You</div>
-              </div>
-            </div>
-            <div class="CommentListing" id="CommentCourse1Lecture2">
-              <div class="Comment">
-                <div class="CommentText">Isn't this the same as lecture 1?</div>
-                <div class="CommentAuthor">--Billy</div>
+            <div class="relative flex flex-col flex-1">
+            <button class="comment-toggle-btn" onclick="toggleComments()">Comments <i class="fa-solid fa-chevron-right"></i></button>
+            <div class="chat-wrapper"></div>
+            <div class="border-t-1 border-blue-400 absolute left-0 right-0 h-16 bottom-0">
+              <div class="chat-bar">
+                <input
+                  class="chat-bar-search-input"
+                  id="chat-input-message"
+                  placeholder="Type here..."
+                />
+                <div class="chat-bar-right-icon" id="chat-send-button">
+                  <i class="fa-solid fa-paper-plane text-white"></i>
+                </div>
               </div>
             </div>
-            <div class="CommentListing" id="CommentCourse1Reading1">
-              <div class="Comment">
-                <div class="CommentText">Nice it's a short one.</div>
-                <div class="CommentAuthor">--Bobby</div>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -134,6 +128,7 @@
     </div>
         <script src="jquery.min.js"></script>
         <script src="js/navbar.js"></script>
+        <script src="database/content-database.js"></script>
         <script src="./content.js"></script>
         <script src="./pdf/pdfobject.js"></script>
         <script>

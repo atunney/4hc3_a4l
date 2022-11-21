@@ -11,6 +11,7 @@ const paths = {
 function clearLocalStorage() {
   localStorage.removeItem("courses");
   localStorage.removeItem("events");
+  localStorage.removeItem("comments");
   location.reload();
 }
 
