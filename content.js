@@ -15,7 +15,7 @@ function getComments(selectedCourse, selectedContentType, selectedContent) {
   if (!(selectedCourse && selectedContentType && selectedContent)) {
     return [];
   }
-  console.log(`${selectedCourse}|${selectedContentType}|${selectedContent}`);
+
   return comments[selectedCourse].content[selectedContentType][selectedContent]
     .comments;
 }
