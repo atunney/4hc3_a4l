@@ -46,6 +46,7 @@ function displayComments() {
   for (const comment of comments) {
     appendComment(comment);
   }
+  scrollToBottomOfChat();
 }
 
 function hideComments() {
@@ -118,8 +119,12 @@ function onCommentSend() {
   if (message.length > 0) {
     $("#chat-input-message").val("");
     sendComment(message);
-    // scrollToBottomOfChat(); // TODO
+    scrollToBottomOfChat();
   }
+}
+
+function scrollToBottomOfChat() {
+  $(".CommentTab").animate({ scrollTop: $(".CommentTab").prop("scrollHeight") }, 100);
 }
 
 $(function () {
