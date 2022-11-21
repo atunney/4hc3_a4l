@@ -50,34 +50,34 @@
           <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Readings')">Readings</button>
           <div class="CourseContentListing" id="Course1Readings">
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading1')">--Reading 1</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading2')">--Reading 2</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading3')">--Reading 3</button>
+            <!-- <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading2')">--Reading 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Reading3')">--Reading 3</button> -->
           </div>
           <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course1Assignments')">Assignments</button>
           <div class="CourseContentListing" id="Course1Assignments">
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Assignment1')">--Assignment 1</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Assignment2')">--Assignment 2</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Assignment3')">--Assignment 3</button>
+            <!-- <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Assignment2')">--Assignment 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course1Assignment3')">--Assignment 3</button> -->
           </div>
         </div>
         <div class="CourseTab" id="Course2Tab">
           <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course2Lectures')">Lectures</button>
           <div class="CourseContentListing" id="Course2Lectures">
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Lecture1')">--Lecture 1</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Lecture2')">--Lecture 2</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Lecture3')">--Lecture 3</button>
+            <!-- <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Lecture2')">--Lecture 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Lecture3')">--Lecture 3</button> -->
           </div>
-          <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course2Readings')">Readings</button>
+          <!-- <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course2Readings')">Readings</button>
           <div class="CourseContentListing" id="Course2Readings">
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Reading1')">--Reading 1</button>
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Reading2')">--Reading 2</button>
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Reading3')">--Reading 3</button>
-          </div>
+          </div> -->
           <button class="ContentTablinks" onclick="openCourseContentListing(event, 'Course2Assignments')">Assignments</button>
           <div class="CourseContentListing" id="Course2Assignments">
             <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Assignment1')">--Assignment 1</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Assignment2')">--Assignment 2</button>
-            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Assignment3')">--Assignment 3</button>
+            <!-- <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Assignment2')">--Assignment 2</button>
+            <button class="ContentListingTablinks" onclick="openCourseContent(event, 'Course2Assignment3')">--Assignment 3</button> -->
           </div>
         </div>
 
@@ -99,6 +99,14 @@
 
         <div id="Course1Assignment1" class="CourseContent">
           <div id="Course1Assignment1pdf"></div>
+        </div>
+
+        <div id="Course2Lecture1" class="CourseContent">
+          <div id="Course2Lecture1pdf"></div>
+        </div>
+
+        <div id="Course2Assignment1" class="CourseContent">
+          <div id="Course2Assignment1pdf"></div>
         </div>
         
         <div class="CommentPanel">
@@ -124,6 +132,12 @@
             <div class="CommentListing" id="CommentCourse1Reading1">
               <div class="Comment">
                 <div class="CommentText">Nice it's a short one.</div>
+                <div class="CommentAuthor">--Billy</div>
+              </div>
+            </div>
+            <div class="CommentListing" id="CommentCourse2Assignment1">
+              <div class="Comment">
+                <div class="CommentText">Dang there goes my plan.</div>
                 <div class="CommentAuthor">--Bobby</div>
               </div>
             </div>
@@ -143,6 +157,8 @@
           PDFObject.embed("./pdf/Course1Lecture3.pdf", "#Course1Lecture3pdf");
           PDFObject.embed("./pdf/Course1Reading1.pdf", "#Course1Reading1pdf");
           PDFObject.embed("./pdf/Course1Assignment1.pdf", "#Course1Assignment1pdf");
+          PDFObject.embed("./pdf/Course2Lecture1.pdf", "#Course2Lecture1pdf");
+          PDFObject.embed("./pdf/Course2Assignment1.pdf", "#Course2Assignment1pdf");
         </script>
   </body>
 </html>
