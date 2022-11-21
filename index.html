@@ -3,6 +3,7 @@
   <head>
     <link rel="icon" href="./images/A4L_Favicon.png">
     <link rel="stylesheet" href="index.css">
+    <script src="database/user-database.js"></script>
     <script src="jquery.min.js"></script>
     <script>
       $(document).ready(function() {
@@ -10,11 +11,13 @@
         $('#submit').click(function(e) {
             e.preventDefault();
 
-            var validEmail = $('#username').val() === 'admin';
-            var validPassword = $('#passwordInput').val() === '123';
+            const success =
+            users[$("#username").val()] !== undefined &&
+            users[$("#username").val()].password === $("#passwordInput").val();
 
-            if (validEmail && validPassword) {
+            if (success) {
                 $('.valid').css('display', 'block');
+                localStorage.setItem("user", JSON.stringify(users[$("#username").val()]));
                 window.location.href = "announcements.html";
             }
             else {
