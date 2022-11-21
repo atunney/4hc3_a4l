@@ -5,9 +5,6 @@
 .CourseListTab {
     float: left;
     width: 10%;
-    border-radius: 1.5rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
   
 .CourseListTab button {
@@ -50,13 +47,10 @@
     float: left;
     padding: 0.75rem;
     gap: 0.5rem;
-    /* border: 1px solid #bfdbfe; */
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    /* width: 20%; */
-    /* height: 300px; */
   }
   
 .CourseTab button {
@@ -91,9 +85,6 @@
     border-radius: 1rem;
     /* background-color: #f1f1f1; */
     width: 100%;
-    border-radius: 1.5rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
   
 .CourseContentListing button {
@@ -126,11 +117,21 @@
 .CommentNub {
     display: block;
     float: right;
-    height: 100%;
-    width: 20%;
+    padding: 2rem 1rem;
     border-radius: 1.5rem;
     background-color: white;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+}
+
+.CommentNub:hover {
+    color: #60a5fa;
+    scale: 103%;
+    border: 2px solid #60a5fa;
+}
+
+.CommentNub:active {
+    scale: 98%;
 }
 
 .CommentTab {
@@ -150,9 +151,6 @@
     position: absolute;
     overflow: auto;
     right: 0%;
-    border-radius: 1.5rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .CommentTab button {
@@ -183,46 +181,38 @@
 
 .CommentListing {
     display: none;
+    border: auto;
+    border-style: solid;
 }
 
 .Comment {
     margin: 0.5em;
+    border: auto;
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.Comment:has(> .CommentAuthorSelf) {
+    background-color: #eff6ff;
 }
 
 .CommentAuthor {
     text-align: left;
-    border-radius: 0.5rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .CommentText {
     text-align: left;
-    border-radius: 0.5rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .CommentAuthorSelf {
     text-align: right;
-    border-radius: 0.5rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .CommentTextSelf {
     text-align: right;
-    border-radius: 0.5rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .pdfobject-container {
