@@ -156,7 +156,7 @@ function onCourseClick(courseName) {
 }
 
 $(function () {
-  const courses = json.courses;
+  const courses = getCourses() || json.courses;
   storeCourses(courses);
   refresh();
 

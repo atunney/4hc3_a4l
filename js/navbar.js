@@ -5,7 +5,16 @@ const paths = {
   calendar: "calendar.html",
   profile: "",
   settings: "",
+  login: "index.html",
 };
+
+function clearLocalStorage() {
+  localStorage.removeItem("courses");
+  localStorage.removeItem("events");
+  localStorage.removeItem("comments");
+  location.reload();
+}
+
 
 $(function () {
   const pathname = window.location.pathname.split("/").pop();
@@ -51,20 +60,26 @@ $(function () {
             <span class="navbar-text-content">Calender</span>
           </div>
         </a>
-        <a href="${paths.profile}" class="navbar-item">
+        <div class="navbar-item navbar-dropdown-wrapper">
           <div class="navbar-item-content-wrapper">
             <div class="navbar-icon bg-gray-200 rounded-xl mr-2">HA</div>
             <span class="navbar-text-content">Himanshu</span>
           </div>
-        </a>
-        <a href="${paths.settings}" class="navbar-item">
+          <div class="navbar-dropdown">
+            <a href="${paths.login}" class="navbar-dropdown-item">Logout</a>
+          </div>
+        </div>
+        <div class="navbar-item navbar-dropdown-wrapper">
           <div class="navbar-item-content-wrapper">
             <div class="navbar-icon">
               <i class="fa-solid fa-gear scale-125"></i>
             </div>
             <span class="navbar-text-content">Settings</span>
           </div>
-        </a>
+          <div class="navbar-dropdown">
+            <div onclick="clearLocalStorage();" class="navbar-dropdown-item">Reset To Default</div>
+          </div>
+        </div>
           `
   );
 });
