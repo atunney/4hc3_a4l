@@ -103,7 +103,7 @@
   border-radius: 1.5rem;
 }
 
-.chat-bar-icon-base, .chat-bar-right-icon, .chat-bar-left-icon {
+.chat-bar-icon-base, .chat-bar-right-icon:disabled, .chat-bar-right-icon, .chat-bar-left-icon {
   display: flex;
   background-color: #60a5fa;
   justify-content: center;
@@ -142,4 +142,15 @@
 
 .chat-bar-right-icon {
   flex: 0 0 auto;
+}
+.chat-bar-right-icon:disabled {
+  background-color: #dbeafe;
+  cursor: default;
+}
+.chat-bar-right-icon:disabled:hover {
+  border-color: transparent;
+  scale: 100%;
+}
+.chat-bar-right-icon:disabled:active {
+  scale: 100%;
 }/*# sourceMappingURL=chat.css.map */

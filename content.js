@@ -15,9 +15,12 @@ function getComments(selectedCourse, selectedContentType, selectedContent) {
   if (!(selectedCourse && selectedContentType && selectedContent)) {
     return [];
   }
-
-  return comments[selectedCourse].content[selectedContentType][selectedContent]
-    .comments;
+  const commentsFound =
+    comments[selectedCourse].content[selectedContentType][selectedContent];
+  if (commentsFound) {
+    return commentsFound.comments;
+  }
+  return [];
 }
 
 function addComment(
@@ -82,6 +85,10 @@ function refresh() {
 }
 
 function sendComment(message) {
+  if (!(selectedCourse && selectedContentType && selectedContent)) {
+    return;
+  }
+
   const comment = {
     type: "sent",
     message: message,
@@ -90,6 +97,20 @@ function sendComment(message) {
 
   addComment(selectedCourse, selectedContentType, selectedContent, comment);
   appendComment(comment);
+}
+
+function setSelectedContent(value) {
+  selectedContent = value;
+  if (value === null) {
+    $(".chat-bar-search-input").prop("disabled", true);
+    $("#chat-send-button").prop("disabled", true);
+    $(".chat-bar-search-input").prop("placeholder", "First, select a document");
+  } else {
+    $(".chat-bar-search-input").prop("disabled", false);
+    $("#chat-send-button").prop("disabled", false);
+    $(".chat-bar-search-input").prop("placeholder", "Type here...");
+
+  }
 }
 
 function onCommentSend() {
@@ -119,14 +140,22 @@ function openCourse(courseName) {
   temp.shift();
   selectedCourse = temp.join(" ");
   selectedContentType = null;
-  selectedContent = null;
+  setSelectedContent(null);
   displayComments();
   refresh();
 
-  var i, courseTab;
+  var i, courseTab, tablinks;
   courseTab = document.getElementsByClassName("CourseTab");
   for (i = 0; i < courseTab.length; i++) {
     courseTab[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("ContentTablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  tablinks = document.getElementsByClassName("ContentListingTablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   closeCourseContentListing();
   closeCourseContent();
@@ -141,8 +170,8 @@ function openCourseContentListing(evt, courseName) {
   selectedContentType = courseName
     .replace(selectedCourse.replace(" ", ""), "")
     .trim();
+  setSelectedContent(null);
   displayComments();
-  selectedContent = null;
   var i, courseContent, tablinks;
   courseContent = document.getElementsByClassName("CourseContentListing");
   for (i = 0; i < courseContent.length; i++) {
@@ -157,11 +186,13 @@ function openCourseContentListing(evt, courseName) {
 }
 
 function openCourseContent(evt, courseName) {
-  selectedContent = courseName
-    .replace(selectedCourse.replace(" ", ""), "")
-    .split(selectedContentType.slice(0, -1))
-    .join(`${selectedContentType.slice(0, -1)} `)
-    .trim();
+  setSelectedContent(
+    courseName
+      .replace(selectedCourse.replace(" ", ""), "")
+      .split(selectedContentType.slice(0, -1))
+      .join(`${selectedContentType.slice(0, -1)} `)
+      .trim()
+  );
   displayComments();
   var i, courseContent, tablinks;
   closeCourseContent();
@@ -173,7 +204,10 @@ function openCourseContent(evt, courseName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(courseName).style.display = "block";
+  const doc = document.getElementById(courseName);
+  if (doc) {
+    doc.style.display = "block";
+  }
   evt.currentTarget.className += " active";
 
   currentContent = courseName;

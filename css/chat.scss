@@ -152,4 +152,17 @@
 .chat-bar-right-icon {
   @extend .chat-bar-icon-base;
   flex: 0 0 auto;
+
+  &:disabled {
+    @extend .chat-bar-icon-base;
+    background-color: #dbeafe;
+    cursor: default;
+    &:hover {
+      border-color: transparent;
+      scale: 100%;
+    }
+    &:active {
+      scale: 100%;
+    }
+  }
 }
